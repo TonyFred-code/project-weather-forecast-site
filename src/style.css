@@ -1,0 +1,18 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  width: 100%;
+}
+
+body {
+  background: linear-gradient(180deg, #b0bac9 55%, #E7E9EB);
+  /* background: linear-gradient(45deg, red, blue); */
+  height: 100vh;
+}
