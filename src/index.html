@@ -3,9 +3,72 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Template</title>
+    <title>Open Weather</title>
   </head>
   <body>
-    <div id="content"></div>
+    <header>
+      <h1>
+        <span class="header-logo icon-container"></span>
+        Weather App
+      </h1>
+    </header>
+    <form action="">
+      <input type="search" name="q" id="city-search" placeholder="Enter City Name" />
+      <button type="submit" class="start-search" ></button>
+    </form>
+    <section>
+      <div class="current-day-weather">
+        <h2 class="city-name">Lagos, Nigeria</h2>
+
+        <p class="date">Saturday 22nd, 2023</p>
+        <p class="time">04:02</p>
+
+        <div class="summary">
+          <div class="icon-container weather-icon"></div>
+          <div class="temperature-details">
+            <div class="current-temp">23.3&deg;</div>
+            <div class="high-low">22.2&deg;/39&deg;</div>
+          </div>
+        </div>
+
+        <p class="condition">Scattered Clouds</p>
+      </div>
+      <ul class="weather-conditions">
+        <li class="weather-condition feels-like">
+          <div>
+            <span class="icon-container temp-icon"></span>
+            Feels like:
+          </div>
+          <div class="feels-like-temp">23.3&deg;</div>
+        </li>
+        <li class="weather-condition humidity">
+          <div>
+            <span class="icon-container humidity-icon"></span> Humidity:
+          </div>
+          <div class="humidity-percentage">23.3&deg;</div>
+        </li>
+        <li class="weather-condition rain-probability">
+          <div>
+            <span class="icon-container rain-prob-icon"></span>
+            Rain Probability:
+          </div>
+          <div class="rain-probability-value">23.3&deg;</div>
+        </li>
+        <li class="weather-condition wind-speed">
+          <div>
+            <span class="icon-container wind-speed-icon"></span>
+            Wind Speed:
+          </div>
+          <div class="wind-speed">23.3&deg;</div>
+        </li>
+        <li class="weather-condition uv-index">
+          <div>
+            <span class="icon-container uv-index-icon"></span>
+            UV Index:
+          </div>
+          <div class="uv-index-value">23.3&deg;</div>
+        </li>
+      </ul>
+    </section>
   </body>
 </html>
