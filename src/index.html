@@ -13,10 +13,10 @@
       </h1>
     </header>
     <form action="">
-      <input type="search" name="q" id="city-search" placeholder="Enter City Name" />
+      <input type="text" name="q" id="city-search" placeholder="Enter City Name" />
       <button type="submit" class="start-search" ></button>
     </form>
-    <section>
+    <section class="day-weather-container">
       <div class="current-day-weather">
         <h2 class="city-name">Lagos, Nigeria</h2>
 
@@ -39,36 +39,40 @@
             <span class="icon-container temp-icon"></span>
             Feels like:
           </div>
-          <div class="feels-like-temp">23.3&deg;</div>
+          <div class="feels-like-temp">25.6&deg;C</div>
         </li>
         <li class="weather-condition humidity">
           <div>
             <span class="icon-container humidity-icon"></span> Humidity:
           </div>
-          <div class="humidity-percentage">23.3&deg;</div>
+          <div class="humidity-percentage">77%</div>
         </li>
         <li class="weather-condition rain-probability">
           <div>
             <span class="icon-container rain-prob-icon"></span>
             Rain Probability:
           </div>
-          <div class="rain-probability-value">23.3&deg;</div>
+          <div class="rain-probability-value">0%</div>
         </li>
         <li class="weather-condition wind-speed">
           <div>
             <span class="icon-container wind-speed-icon"></span>
             Wind Speed:
           </div>
-          <div class="wind-speed">23.3&deg;</div>
+          <div class="wind-speed">1 m/s</div>
         </li>
         <li class="weather-condition uv-index">
           <div>
             <span class="icon-container uv-index-icon"></span>
             UV Index:
           </div>
-          <div class="uv-index-value">23.3&deg;</div>
+          <div class="uv-index-value">0</div>
         </li>
       </ul>
+    </section>
+    <section class="next-days-forecast">
+      <div class="tomorrow-forecast"></div>
+      <div class="next-tomorrow-forecast"></div>
     </section>
   </body>
 </html>
