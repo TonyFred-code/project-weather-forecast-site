@@ -103,16 +103,24 @@ form button.start-search:hover {
   cursor: pointer;
 }
 
+main {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
 .day-weather-container {
   display: flex;
   justify-content: center;
   padding: 24px;
   gap: 24px;
-  margin: auto;
+}
+
+.day-weather-container.hide {
+  display: none;
 }
 
 .current-day-weather {
-  border: 1px solid red;
   width: 370px;
   height: 330px;
   padding: 18px;
@@ -128,6 +136,7 @@ form button.start-search:hover {
 
 .city-name {
   font-size: 2.5rem;
+  text-align: center;
 }
 
 .date-time {
@@ -192,6 +201,59 @@ form button.start-search:hover {
   font-size: 1.95rem;
 }
 
+.loading-screen.show {
+  z-index: 3;
+  position: absolute;
+  width: 100%;
+  background: #e7e9eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 200px;
+  bottom: 0;
+}
+
+.loading-screen.hide {
+  display: none;
+}
+
+.loader {
+  width: 100px;
+  height: 100px;
+  background-color: #eee;
+  border-radius: 50%;
+  margin: 50px;
+  position: relative;
+}
+
+.loader::after {
+  content: '';
+  display: block;
+  height: 100px;
+  width: 100px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  border-radius: 50%;
+  border: 8px solid transparent;
+  border-top-color: orangered;
+  border-bottom-color: #bebcbc;
+  border-left-color: #b3bcbc;
+  border-right-color: #b3bcbc;
+  animation: spinner 2s linear infinite;
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
 @media screen and (max-width: 700px) {
   body {
     height: 100%;
@@ -201,5 +263,9 @@ form button.start-search:hover {
   .day-weather-container {
     flex-direction: column;
     align-items: center;
+  }
+
+  .loading-screen.show {
+    top: 180px;
   }
 }
