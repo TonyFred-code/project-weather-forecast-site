@@ -21,7 +21,7 @@
       />
       <button type="submit" class="start-search"></button>
     </form>
-    <section class="day-weather-container">
+    <section class="day-weather-container hide">
       <div class="current-day-weather">
         <h2 class="city-name">Lagos, Nigeria</h2>
 
@@ -65,7 +65,7 @@
             <span class="icon-container wind-speed-icon"></span>
             Wind Speed:
           </div>
-          <div class="wind-speed">1 m/s</div>
+          <div class="wind-speed-value">1 m/s</div>
         </li>
         <li class="weather-condition uv-index">
           <div>
@@ -76,6 +76,8 @@
         </li>
       </ul>
     </section>
-    <div class="loading-screen"></div>
+    <div class="loading-screen show">
+      <div class="loader"></div>
+    </div>
   </body>
 </html>
