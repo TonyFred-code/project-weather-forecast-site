@@ -4,25 +4,38 @@ import loadIcons from './loadIcon';
 import getImg from './currentWeatherIcon';
 
 const form = document.querySelector('form');
+const dayWeather = document.querySelector('.day-weather-container');
+const loadingScreen = document.querySelector('.loading-screen');
+const errorScreen = document.querySelector('.error-screen');
+
+function hideErrorScreen() {
+  errorScreen.classList.add('hide');
+  errorScreen.classList.remove('show');
+}
+
+function showErrorScreen() {
+  errorScreen.classList.add('show');
+  errorScreen.classList.remove('hide');
+}
 
 function showLoadingScreen() {
-  const dayWeather = document.querySelector('.day-weather-container');
-  const loadingScreen = document.querySelector('.loading-screen');
   loadingScreen.classList.add('show');
   loadingScreen.classList.remove('hide');
-
-  dayWeather.classList.add('hide');
-  dayWeather.classList.remove('show');
 }
 
 function hideLoadingScreen() {
-  const dayWeather = document.querySelector('.day-weather-container');
-  const loadingScreen = document.querySelector('.loading-screen');
   loadingScreen.classList.remove('show');
   loadingScreen.classList.add('hide');
+}
 
-  dayWeather.classList.remove('hide');
+function showCityDataScreen() {
   dayWeather.classList.add('show');
+  dayWeather.classList.remove('hide');
+}
+
+function hideCityDataScreen() {
+  dayWeather.classList.add('hide');
+  dayWeather.classList.remove('show');
 }
 
 function getWeatherImg(srcString) {
@@ -71,7 +84,6 @@ function renderCityData(cityData) {
   currentTempContainer.innerHTML = `${cityData.current.temp_c}&deg;c`;
 
   const highLowTempContainer = document.querySelector('.high-low');
-  // forecast.forecastday[0].day.mintemp_c
   highLowTempContainer.innerHTML = `H: ${cityData.forecast.forecastday[0].day.maxtemp_c}&deg;c&nbsp;&nbsp; L: ${cityData.forecast.forecastday[0].day.mintemp_c}&deg;c`;
 
   const conditionTextContainer = document.querySelector('.condition');
@@ -98,6 +110,8 @@ function printCityData(cityData) {
   if ('location' in cityData) {
     console.log('getting location');
     renderCityData(cityData);
+    showCityDataScreen();
+    hideErrorScreen();
     setTimeout(() => {
       hideLoadingScreen();
     }, 800);
@@ -115,6 +129,17 @@ function fetchCityWeatherData(cityName = 'Lagos') {
     .then((response) => {
       printCityData(response);
       console.log(cityName);
+    })
+    .catch((error) => {
+      console.error(error);
+      hideCityDataScreen();
+      hideLoadingScreen();
+      // hideErrorScreen();
+      if (!navigator.onLine) {
+        console.log('You are offline');
+      } else {
+        showErrorScreen();
+      }
     });
 }
 
@@ -124,13 +149,12 @@ const cityNameInput = form.elements.q;
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
-  // const cityNameInput = form.elements['q'];
   const cityName = cityNameInput.value;
 
+  hideErrorScreen();
+  hideCityDataScreen();
   showLoadingScreen();
   fetchCityWeatherData(cityName);
 });
-
-// printCityData();
 
 loadIcons();
