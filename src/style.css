@@ -17,11 +17,13 @@ html {
 
 body {
   background: linear-gradient(180deg, #b0bac9 55%, #e7e9eb);
+  background-repeat: no-repeat;
+  background-size: cover;
   height: 100vh;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 1.6rem;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: 90px 80px 1fr;
 }
 
 .icon-container {
@@ -103,17 +105,13 @@ form button.start-search:hover {
   cursor: pointer;
 }
 
-main {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-}
-
-.day-weather-container {
+.day-weather-container.show {
   display: flex;
   justify-content: center;
   padding: 24px;
   gap: 24px;
+  grid-row: 3 / -1;
+  grid-column: 1 / -1;
 }
 
 .day-weather-container.hide {
@@ -203,14 +201,13 @@ main {
 
 .loading-screen.show {
   z-index: 3;
-  position: absolute;
   width: 100%;
   background: #e7e9eb;
   display: flex;
   align-items: center;
   justify-content: center;
-  top: 200px;
-  bottom: 0;
+  grid-row: 3 / -1;
+  grid-column: 1 / -1;
 }
 
 .loading-screen.hide {
@@ -253,11 +250,20 @@ main {
   }
 }
 
+.error-screen.hide {
+  display: none;
+}
+
+.error-screen {
+  display: flex;
+  grid-row: 3 / -1;
+  grid-column: 1 / -1;
+}
+
 
 @media screen and (max-width: 700px) {
   body {
     height: 100%;
-    display: block;
   }
 
   .day-weather-container {
@@ -268,4 +274,12 @@ main {
   .loading-screen.show {
     top: 180px;
   }
+}
+
+.show {
+  display: flex;
+}
+
+.hide {
+  display: none;
 }
