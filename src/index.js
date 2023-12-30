@@ -7,6 +7,17 @@ const form = document.querySelector('form');
 const dayWeather = document.querySelector('.day-weather-container');
 const loadingScreen = document.querySelector('.loading-screen');
 const errorScreen = document.querySelector('.error-screen');
+const offlineScreen = document.querySelector('.offline-screen');
+
+function hideOfflineScreen() {
+  offlineScreen.classList.add('hide');
+  offlineScreen.classList.remove('show');
+}
+
+function showOfflineScreen() {
+  offlineScreen.classList.add('show');
+  offlineScreen.classList.remove('hide');
+}
 
 function hideErrorScreen() {
   errorScreen.classList.add('hide');
@@ -107,17 +118,31 @@ function renderCityData(cityData) {
 
 function printCityData(cityData) {
   console.log(cityData);
+  hideOfflineScreen();
   if ('location' in cityData) {
     console.log('getting location');
     renderCityData(cityData);
     showCityDataScreen();
     hideErrorScreen();
-    setTimeout(() => {
-      hideLoadingScreen();
-    }, 800);
   } else if ('error' in cityData) {
-    console.log('getting error');
+    if (cityData.error.code === 1006) {
+      const locationNotFound = document.querySelector('.location-not-found');
+      locationNotFound.classList.remove('hide');
+      locationNotFound.classList.add('show');
+    } else {
+      const errorMsg = document.querySelector('.error-message');
+      errorMsg.textContent = cityData.error.message;
+      errorMsg.classList.add('show');
+      errorMsg.classList.remove('hide');
+    }
+
+    hideCityDataScreen();
+    showErrorScreen();
   }
+
+  setTimeout(() => {
+    hideLoadingScreen();
+  }, 800);
 }
 
 function fetchCityWeatherData(cityName = 'Lagos') {
@@ -134,9 +159,9 @@ function fetchCityWeatherData(cityName = 'Lagos') {
       console.error(error);
       hideCityDataScreen();
       hideLoadingScreen();
-      // hideErrorScreen();
       if (!navigator.onLine) {
         console.log('You are offline');
+        showOfflineScreen();
       } else {
         showErrorScreen();
       }
@@ -147,12 +172,18 @@ fetchCityWeatherData();
 
 const cityNameInput = form.elements.q;
 
+cityNameInput.addEventListener('input', () => {
+  const { value } = cityNameInput;
+  console.log(value);
+});
+
 form.addEventListener('submit', (e) => {
   e.preventDefault();
   const cityName = cityNameInput.value;
 
   hideErrorScreen();
   hideCityDataScreen();
+  hideOfflineScreen();
   showLoadingScreen();
   fetchCityWeatherData(cityName);
 });
