@@ -1,4 +1,4 @@
-# A Project Template
+# PROJECT WEATHER APP
 
 This was created as a project for [odin project](https://www.theodinproject.com/lessons/node-path-javascript-weather-app) weather app creation project.
 This app simply display current weather conditions of city name entered.
