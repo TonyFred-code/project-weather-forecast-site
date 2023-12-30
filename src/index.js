@@ -168,18 +168,30 @@ function fetchCityWeatherData(cityName = 'Lagos') {
     });
 }
 
-fetchCityWeatherData();
-
 const cityNameInput = form.elements.q;
 
 cityNameInput.addEventListener('input', () => {
   const { value } = cityNameInput;
-  console.log(value);
+
+  if (value.trim() === '') {
+    cityNameInput.setCustomValidity('Enter a city name');
+  } else {
+    cityNameInput.setCustomValidity('');
+  }
+  cityNameInput.reportValidity();
 });
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
   const cityName = cityNameInput.value;
+  cityNameInput.value = '';
+  cityNameInput.blur();
+
+  if (cityName.trim() === '') {
+    cityNameInput.setCustomValidity('Enter a city name');
+    cityNameInput.reportValidity();
+    return;
+  }
 
   hideErrorScreen();
   hideCityDataScreen();
@@ -189,3 +201,4 @@ form.addEventListener('submit', (e) => {
 });
 
 loadIcons();
+fetchCityWeatherData();

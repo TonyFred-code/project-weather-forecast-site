@@ -29,7 +29,7 @@ export default function loadIcons() {
   const uvIndexIcon = document.querySelector('.icon-container.uv-index-icon');
   const uvIndexImg = createImg(uvIndexIconSrc, 'Humidity Icon');
 
-  const githubIcon = document.querySelector(".icon-container.github-icon");
+  const githubIcon = document.querySelector('.icon-container.github-icon');
   const githubImg = createImg(githubIconSrc, 'Humidity Icon');
 
   headerIcon.appendChild(headerImg);
