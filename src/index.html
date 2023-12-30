@@ -75,12 +75,21 @@
           <div class="uv-index-value">0</div>
         </li>
       </ul>
+
+      <p>
+        Powered by
+        <a href="https://www.weatherapi.com/" title="Weather API"
+          >WeatherAPI.com</a
+        >
+      </p>
     </section>
     <div class="loading-screen show">
       <div class="loader"></div>
     </div>
     <div class="error-screen hide">
-      AN ERROR OCCURRED WHILE GETTING YOUR DATA.
+      <div class="location-not-found hide">NO MATCHING LOCATION FOUND</div>
+      <div class="error-message hide"></div>
     </div>
+    <div class="offline-screen hide">YOU ARE CURRENTLY OFFLINE</div>
   </body>
 </html>
