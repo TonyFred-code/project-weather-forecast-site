@@ -4,6 +4,7 @@ import thermometerIconSrc from './icons/thermometer.svg';
 import rainProbIconSrc from './icons/rain.svg';
 import windSpeedIconSrc from './icons/wind.svg';
 import uvIndexIconSrc from './icons/uv-index.svg';
+import githubIconSrc from './icons/github.svg';
 
 import createImg from './createImg';
 
@@ -28,8 +29,8 @@ export default function loadIcons() {
   const uvIndexIcon = document.querySelector('.icon-container.uv-index-icon');
   const uvIndexImg = createImg(uvIndexIconSrc, 'Humidity Icon');
 
-  // const thermometerIcon = document.querySelector(".icon-container.temp-icon");
-  // const thermometerImg = createImg(thermometerIconSrc, 'Humidity Icon');
+  const githubIcon = document.querySelector(".icon-container.github-icon");
+  const githubImg = createImg(githubIconSrc, 'Humidity Icon');
 
   headerIcon.appendChild(headerImg);
   humidityIcon.appendChild(humidityImg);
@@ -37,4 +38,5 @@ export default function loadIcons() {
   rainProbIcon.appendChild(rainProbImg);
   windSpeedIcon.appendChild(windSpeedImg);
   uvIndexIcon.appendChild(uvIndexImg);
+  githubIcon.appendChild(githubImg);
 }
